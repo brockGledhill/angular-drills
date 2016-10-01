@@ -1,9 +1,22 @@
-<html>
-	<body>
-		Something
-				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<html ng-app="filterApp">
+
+	<body ng-controller="mainCtrl">
+
+		<input ng-model="userFilter.name" class="form-control" placeholder="Search Name">
+		<!-- try to do a selct tag so you can filter by more options -->
+		<ul ng-repeat="person in getData | filter: userFilter | orderBy: sortProp : sortDirection">
+			<li>
+				<div>{{person.name}}</div>
+				<div>{{person.email}}</div>
+				<div>{{person.dateEmployed}}</div>
+				<div>{{person.phone}}</div>
+			</li>
+		</ul>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="app.js"></script>
 		<script src="controller.js"></script>
 		<script src="service.js"></script>
 	</body>
+
 </html>

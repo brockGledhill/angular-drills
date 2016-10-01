@@ -1,7 +1,18 @@
 <html ng-app="apiApp">
-	<body>
-		
-				<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<body ng-controller="mainCtrl">
+
+		<input ng-model="apiFilter.name" class="form-control" placeholder="Search Name">
+		<!-- try to do a selct tag so you can filter by more options -->
+		<ul ng-repeat="smurf in getData | filter: apiFilter | orderBy: sortProp : sortDirection">
+			<li>
+				<div>{{smurf.img}}</div>
+				<div>{{smurf.name}}</div>
+				<div>{{smurf.id}}</div>
+				<div>{{smurf.created}}</div>
+			</li>
+		</ul>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="app.js"></script>
 		<script src="controller.js"></script>
 		<script src="service.js"></script>
